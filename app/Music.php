@@ -15,4 +15,8 @@ class Music extends Model
     public function genre() {
         return $this->hasOne(Genre::class);
     }
+
+    public function artist() {
+        return $this->belongsTo(Artist::class);
+    }
 }
