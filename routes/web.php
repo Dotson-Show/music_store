@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/music/create', 'MusicController@create')->name('create');
+Route::get('/music', 'MusicController@store')->name('create');
+

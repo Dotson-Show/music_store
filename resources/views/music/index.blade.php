@@ -14,10 +14,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
-                    <br>
-                    <a href="/music/create" class="btn btn-primary">Create New Music</a>
-                    <a href="/music" class="btn btn-primary">Manage Music</a>
+                    
                 </div>
             </div>
         </div>
