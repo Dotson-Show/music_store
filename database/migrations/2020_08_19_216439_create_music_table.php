@@ -17,7 +17,7 @@ class CreateMusicTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('file');
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->year('release_year');
             $table->foreignId('label_id')->constrained('labels')->onDelete('cascade');
             $table->foreignId('genre_id')->constrained('genres')->onDelete('cascade');
