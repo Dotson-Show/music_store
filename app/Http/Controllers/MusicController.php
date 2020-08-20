@@ -46,7 +46,9 @@ class MusicController extends Controller
         $data['file']->store('musicfiles', 'public');
         $data['file']->store('images', 'public');
 
-        
+        Music::create($data);
+
+
     }
 
     /**
