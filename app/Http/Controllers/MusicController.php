@@ -35,7 +35,18 @@ class MusicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = request()->validate([
+            'name' => 'required',
+            'file' => 'required',
+            'file_type' => 'required',
+            'picture' => 'required',
+            'release_year' => 'required',
+        ]);
+
+        $data['file']->store('musicfiles', 'public');
+        $data['file']->store('images', 'public');
+
+        
     }
 
     /**
