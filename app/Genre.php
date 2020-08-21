@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
-    protected $guareded = [];
-
+    protected $guarded = [];
 
     public function music()
     {

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form action="/music/store" method="post">
+                    <form action="/music/store" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                           <label for="name">Title</label>
@@ -54,6 +54,30 @@
                                 <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label for="genre_id">Genre</label>
+                            <select class="form-control" name="genre_id" id="genre_id">
+                              @foreach ($genres as $genre)
+                                <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+                              @endforeach
+                            </select>
+
+                            @error('genre_id')
+                                <small class="text-danger">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="label_id">Label</label>
+                            <select class="form-control" name="label_id" id="label_id">
+                              @foreach ($labels as $label)
+                                <option value="{{ $label->id }}">{{ $label->name }}</option>
+                              @endforeach
+                            </select>
+
+                              @error('label_id')
+                                  <small class="text-danger">{{ $message }}</small>
+                              @enderror
+                          </div>
                         <div class="form-group">
                           <label for="release_year">Release Year</label>
                           <input type="text" class="form-control" name="release_year" id="" aria-describedby="release_yearHelpId" placeholder="1989">

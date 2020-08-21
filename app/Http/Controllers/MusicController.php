@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Music;
+use App\Label;
+use App\Genre;
 use Illuminate\Http\Request;
 
 class MusicController extends Controller
@@ -24,7 +26,10 @@ class MusicController extends Controller
      */
     public function create()
     {
-        return view('music.create');
+        $labels = Label::all();
+        $genres = Genre::all();
+
+        return view('music.create', compact('labels', 'genres'));
     }
 
     /**
@@ -40,15 +45,28 @@ class MusicController extends Controller
             'file' => 'required',
             'file_type' => 'required',
             'picture' => 'required',
+            'genre_id' => 'required',
+            'label_id' => 'required',
             'release_year' => 'required',
         ]);
 
+
         $data['file']->store('musicfiles', 'public');
-        $data['file']->store('images', 'public');
+        $data['picture']->store('images', 'public');
 
-        Music::create($data);
+        Music::create([
+            'name' => $data['name'],
+            'file' => $data['file']->hashName(),
+            'file_type' => $data['file_type'],
+            'picture' => $data['picture']->hashName(),
+            'genre_id' => $data['genre_id'],
+            'label_id' => $data['label_id'],
+            'release_year' => $data['release_year'],
+        ]);
 
+        $success_msg = "<script>alert('Upload Successful')</script>";
 
+        return back();
     }
 
     /**
